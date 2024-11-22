@@ -13,6 +13,7 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
         'uninstall',
         'config',
         'config_form',
+        'define_acl',
     ];
 
     /**
@@ -82,6 +83,21 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
         set_option('template_option', $option);
     }
 
+    /**
+     * Define the plugin's Access Control List.
+     *
+     * @param array $args
+     */
+    public function hookDefineAcl($args)
+    {
+        $acl = $args['acl']; // get the Zend_Acl
+
+        $acl->addResource('Template_Index');
+
+        $acl->allow(array('super'), array('Template_Index'));
+        $acl->deny(array('admin'), array('Template_Index'));
+    }
+
 
 
     /**
@@ -94,10 +110,10 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
     {
         $nav[] = array(
             'label' => __('Template Menuitem'),
-            'uri' => url('temmplate-url'),
-            // 'resource' => 'Template_Index',
-            'privilege' => 'index'  // index:
-            // 'privilege' => 'browse' // browse: 
+            'uri' => url('template-url'),
+            'resource' => 'Template_Index',
+            'privilege' => 'index'      // index:
+            // 'privilege' => 'browse'  // browse:
         );
         return $nav;
     }
