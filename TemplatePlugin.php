@@ -103,8 +103,7 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookConfig($args): void
     {
-        $option = trim($args['post']['template_option']);
-        set_option('template_option', $option);
+        set_option('template_option_3', trim($args['post']['template-option-3']));
     }
 
     /**
@@ -112,7 +111,7 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
      *
      * @param array $args
      */
-    public function hookDefineAcl($args)
+    public function hookDefineAcl($args): void
     {
         $acl = $args['acl']; // get the Zend_Acl
 
@@ -128,7 +127,7 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
      * @param mixed $args
      * @return void
      */
-    public function hookPublicHead($args): void 
+    public function hookPublicHead($args): void
     {
        // Code
     }
