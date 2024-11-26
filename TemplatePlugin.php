@@ -5,6 +5,10 @@
  *  Omeka_Plugin_AbstractPlugin is designed to streamline common tasks for a plugin, such as defining hook and 
  *  filter callbacks and setting options when the plugin is installed.
  *  See: https://omeka.readthedocs.io/en/latest/Tutorials/understandingOmeka_Plugin_AbstractPlugin.html
+ * 
+ * @package Template
+ * @copyright Copyright 2024, Christos Sidiropoulos
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt GPLv3 or any later version
  */
 class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
 {
@@ -108,6 +112,8 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
 
     /**
      * Define the plugin's Access Control List.
+     * 
+     * See: https://omeka.readthedocs.io/en/latest/Reference/hooks/define_acl.html
      *
      * @param array $args
      */
@@ -135,6 +141,8 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
     /**
      * Add the Template link to the admin main navigation.
      * 
+     * See: https://omeka.readthedocs.io/en/latest/Reference/filters/admin_navigation_main.html
+     * 
      * @param array Navigation array.
      * @return array Filtered navigation array.
      */
@@ -142,10 +150,13 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
     {
         $nav[] = array(
             'label' => __('Template Menuitem'),
-            'uri' => url('template-url'),
+            'uri' => url('template'),   // The url must match the controller!! E.g:
+                                            // Template_... -> template
+                                            // TemplateExample_... -> template-example
+            // 'uri' => url('template', array('status' => 'some-status')),  // Add query parameter if wanted
             'resource' => 'Template_Index',
-            'privilege' => 'index'      // index:
-            // 'privilege' => 'browse'  // browse:
+            'privilege' => 'index'      // index: TODO
+            // 'privilege' => 'browse'  // browse: TODO
         );
         return $nav;
     }
@@ -191,3 +202,4 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
         For the complete lsit visit: https://omeka.readthedocs.io/en/latest/Reference/filters/
     */
 }
+?>

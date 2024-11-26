@@ -2,10 +2,12 @@
 
 /**
  * // TODO
+ * 
+ * See: https://omeka.readthedocs.io/en/latest/Reference/controllers/IndexController.html#IndexController
  *
- * @copyright csidirop
- * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  * @package Template
+ * @copyright Copyright 2024, Christos Sidiropoulos
+ * @license http://www.gnu.org/licenses/gpl-3.0.txt GPLv3 or any later version
  */
 class Template_IndexController extends Omeka_Controller_AbstractActionController
 {
@@ -18,14 +20,18 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
     //     parent::init();
     // }
 
-    // public function indexAction()
-    // {
-    //     // Always go to browse.
-    //     $this->_helper->redirector('index');
-    //     return;
-    // }
+    /**
+     * Omeka needs the controller's indexAction function
+     * 
+     * @return void
+     */
+    public function indexAction(): void
+    {
+        // This will automatically render views/admin/index/index.php
+        // Do something else: ...
+    }
 
-    // here comming all actions performed onn that side:
+    // here comming all actions performed on that page: ...
 }
 
 ?>
