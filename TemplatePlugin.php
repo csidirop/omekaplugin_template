@@ -56,6 +56,9 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookInstall(): void
     {
+        // Install options defined in $_options
+        $this->_installOptions();
+
         // Add some options:
         set_option('template_option_2', 'Default Value');
 
@@ -82,6 +85,13 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookUninstall(): void
     {
+        // Uninstall options defined in $_options
+        $this->_uninstallOptions();
+
+        // Delete the plugin option:
+        delete_option('template_option_2');
+        delete_option('template_option_3');
+
         // Drop the custom database table:
         try {
             $sql = "DROP TABLE IF EXISTS `{$this->_db->Template}`;";
@@ -89,9 +99,6 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
         } catch(Exception $e) {
             throw $e;
         }
-
-        // Delete the plugin option:
-        delete_option('template_option');
     }
 
     /**
@@ -107,6 +114,7 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookConfig($args): void
     {
+        set_option('template_option', trim($args['post']['template-option']));
         set_option('template_option_3', trim($args['post']['template-option-3']));
     }
 

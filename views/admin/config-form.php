@@ -1,7 +1,19 @@
 <?php
+    $template_option = get_option('template_option');
     $template_option_3 = get_option('template_option_3');
 ?>
 
+<div class="field">
+    <div class="two columns alpha">
+        <?php echo get_view()->formLabel('template-option', __('Template Option')); ?>
+    </div>
+    <div class="inputs five columns omega">
+        <p class="explanation">
+            <?php echo __('Any explanatory text about the form element.'); ?>
+        </p>
+        <?php echo get_view()->formInput('template-option', $template_option); ?>
+    </div>
+</div>
 
 <div class="field">
     <div class="two columns alpha">

@@ -27,6 +27,7 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
      */
     public function indexAction(): void
     {
+        debug("Template: indexAction()");
         // This will automatically render views/admin/index/index.php
         // Do something else: ...
     }
