@@ -11,7 +11,7 @@
         <p class="explanation">
             <?php echo __('Any explanatory text about the form element.'); ?>
         </p>
-        <?php echo get_view()->formInput('template-option', $template_option); ?>
+        <?php echo get_view()->formText('template-option', $template_option); ?>
     </div>
 </div>
 
@@ -23,6 +23,6 @@
         <p class="explanation">
             <?php echo __('Any explanatory text about the form element.'); ?>
         </p>
-        <?php echo get_view()->formInput('template-option-3', $template_option_3); ?>
+        <?php echo get_view()->formText('template-option-3', $template_option_3); ?>
     </div>
 </div>
