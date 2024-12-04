@@ -116,6 +116,7 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
     {
         set_option('template_option', trim($args['post']['template-option']));
         set_option('template_option_3', trim($args['post']['template-option-3']));
+        set_option('template_option_4', trim($args['post']['template-option-4']));
     }
 
     /**
