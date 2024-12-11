@@ -7,13 +7,14 @@
 ?>
 
 <!-- Examples of `formText()` -->
+<h2><?= __('Examples of `formText()`') ?></h2>
 <div class="field template-formText">
     <div class="two columns alpha">
         <?php echo $view->formLabel('template-option', __('Template Option')); ?>
     </div>
     <div class="inputs five columns omega">
         <p class="explanation">
-            <?php echo __('Any explanatory text about the form element.'); ?>
+            <?php echo __('Any explanatory text about the first form element.'); ?>
         </p>
         <?php echo $view->formText('template-option', $template_option); ?>
     </div>
@@ -22,15 +23,19 @@
 <div class="field template-formText">
     <div class="two columns alpha">
         <?php echo $view->formLabel('template-option-3', __('Template Option 3')); ?>
+        <p class="explanation">
+            <?php echo __('Some additional info.'); ?>
+        </p>
     </div>
     <div class="inputs five columns omega">
         <p class="explanation">
-            <?php echo __('Any explanatory text about the form element.'); ?>
+            <?php echo __('Any explanatory text about the second form element.'); ?>
         </p>
         <?php echo $view->formText('template-option-3', $template_option_3); ?>
     </div>
 </div>
 
+<h2><?= __('Examples of `formCheckbox()`') ?></h2>
 <!-- Example of `formCheckbox()` -->
 <div class="field template-formCheckbox">
     <div class="two columns alpha">
