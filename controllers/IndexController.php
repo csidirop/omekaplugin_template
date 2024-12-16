@@ -11,15 +11,6 @@
  */
 class Template_IndexController extends Omeka_Controller_AbstractActionController
 {
-
-    // /**
-    //  * Initialize the controller.
-    //  */
-    // public function init()
-    // {
-    //     parent::init();
-    // }
-
     /**
      * Omeka needs the controller's indexAction function
      * 
@@ -33,6 +24,31 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
     }
 
     // here comming all actions performed on that page: ...
+
+    /**
+     * The action performed when clicking the the test button
+     * 
+     * @return void
+     */
+    public function test1Action(): void 
+    {
+        debug("Template: Test button debug message!"); // Print a debug message
+        $this->_helper->flashMessenger(__('Button is working great!'), 'success'); // Show a green flash message
+        $this->_helper->redirector('index', 'index'); // Return back to the index site
+    }
+
+    /**
+     * The action performed when clicking the the second test button
+     * 
+     * @return void
+     */
+    public function test2Action(): void 
+    {
+        $par = $this->getRequest()->getParam('par');
+        debug("Template: Second test button debug message with parameter: " . $par); // Print a debug message
+        $this->_helper->flashMessenger(__('Button parameter was: ' . $par), 'success'); // Show a green flash message
+        $this->_helper->redirector('index', 'index'); // Return back to the index site
+    }
 }
 
 ?>

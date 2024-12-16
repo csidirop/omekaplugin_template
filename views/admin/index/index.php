@@ -5,6 +5,7 @@ $head = array(
     );
 
     echo head($head);
+    echo flash(); // this is needed to show flash messages (see IndexController::testAction() for one example)
 
     // <!--  For view-related function see: https://omeka.readthedocs.io/en/latest/Reference/packages/Function/View/index.html -->
 ?>
@@ -20,6 +21,15 @@ $head = array(
     <li>Config option 2: <strong><?php echo htmlspecialchars(get_option('template_option_2')); ?></strong></li>
     <li>Config option 3: <strong><?php echo htmlspecialchars(get_option('template_option_3')); ?></strong></li>
 </ul>
+
+<p>Here are some buttons:</p>
+<div>
+    <p class="explanation"><?php echo __('This is a simple Button:')?></p>
+    <a class="button green" href="<?php echo url('template/index/test1'); ?>">TEST</a>
+    <p class="explanation"><?php echo __('This is a Button with a parameter:')?></p>
+    <a class="button green" href="<?php echo url('template/index/test2/par/custom'); ?>">TEST</a>
+</div>
+
 
 <div class="search-filters"><?php echo item_search_filters();?></div>
 
