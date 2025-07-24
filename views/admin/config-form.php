@@ -54,3 +54,25 @@
         ?>
     </div>
 </div>
+
+<h2><?= __('Examples of `formSelect()`') ?></h2>
+<!-- Example of `formSelect()` -->
+<div class="field">
+    <div class="two columns alpha">
+        <?php echo get_view()->formLabel('user_select', "Select Users"); ?>
+        <p class="explanation">Blabla</p>
+    </div>
+    <div class="inputs five columns omega">
+        <?php echo get_view()->formSelect("user_select2", null, null, [  'install',
+                                                            'uninstall',
+                                                            'config',
+                                                            'config_form',
+                                                            'define_acl']); ?>
+        <select name="user_select[]" id="user_select" multiple>
+            <option value="user1">User 1</option>
+            <option value="user2">User 2</option>
+            <option value="user3">User 3</option>
+        </select>
+        <p class="explanation">Hold down the Ctrl (Windows) or Command (Mac) key to select multiple options.</p>
+    </div>
+</div>
