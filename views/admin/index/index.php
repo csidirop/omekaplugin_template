@@ -11,10 +11,11 @@ $head = array(
 ?>
 
 <div class="pagination"><?php echo pagination_links(); ?></div>
+<?php echo $this->partial('common/nav.php');?> <!-- This will include the navigation from Template/views/admin/common/nav.php -->
 
 <h2>Template Plugin Admin View</h2>
-<p>This is a sample admin view for the Template plugin.</p>
-<p>Here are some of the options set by this plugin loaded:</p>
+<p>This is a sample admin view for this (unofficial) template and demonstration plugin. It contains some common building blocks used for Omeka Classic plugins. Look into the source code for more details.</p>
+<p>Here are some of the options set by this plugin (in the config view):</p>
 
 <ul>
     <li>Config option 1: <strong><?php echo htmlspecialchars(get_option('template_option_1')); ?></strong></li>

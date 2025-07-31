@@ -12,7 +12,7 @@
 class Template_IndexController extends Omeka_Controller_AbstractActionController
 {
     /**
-     * Omeka needs the controller's indexAction function
+     * Omeka needs the controller's indexAction function to render the index view.
      * 
      * @return void
      */
@@ -49,6 +49,40 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
         $this->_helper->flashMessenger(__('Button parameter was: ' . $par), 'success'); // Show a green flash message
         $this->_helper->redirector('index', 'index'); // Return back to the index site
     }
+
+
+    /**
+     *  Navigation
+     * 
+     *  The following section contains actions which are used to build the navigation views
+     */
+
+    /**
+     * This action is called when the user clicks on the second view link in the navigation.
+     * It will render the secondview.php view file.
+     * 
+     * @return void
+     */
+    public function secondviewAction()
+    {
+        //This will automatically render views/admin/index/secondview.php
+        // Do something else: ...
+        debug("Template: secondviewAction() called");
+    }
+
+    /**
+     * This action is called when the user clicks on the third view link in the navigation.
+     * It will render the thirdview.php view file.
+     * 
+     * @return void
+     */
+    public function thirdviewAction()
+    {
+        //This will automatically render views/admin/index/thirdview.php
+        // Do something else: ...
+        debug("Template: thirdviewAction() called");
+    }
+
 }
 
 ?>
