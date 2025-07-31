@@ -35,8 +35,8 @@
     </div>
 </div>
 
-<h2><?= __('Examples of `formCheckbox()`') ?></h2>
 <!-- Example of `formCheckbox()` -->
+<h2><?= __('Examples of `formCheckbox()`') ?></h2>
 <div class="field template-formCheckbox">
     <div class="two columns alpha">
         <?php echo $view->formLabel('template-option-4', __('Template Option 4')); ?>
@@ -55,8 +55,8 @@
     </div>
 </div>
 
-<h2><?= __('Examples of `formSelect()`') ?></h2>
 <!-- Example of `formSelect()` -->
+<h2><?= __('Examples of `formSelect()`') ?></h2>
 <div class="field">
     <div class="two columns alpha">
         <?php echo get_view()->formLabel('user_select', "Select Users"); ?>
