@@ -1,9 +1,15 @@
 # Template Plugin for Omeka Classic
 
-This is a (unofficial) barebones plugin for Omeka Classic that provides a simple example of a plugin structure. It includes a configuration page and an admin view, offering a starting point for developing custom plugins and some simple examples. Its based on informations from the Omeka classic tutorials: https://omeka.readthedocs.io/en/latest/Tutorials/index.html and own experiences.
+This is a (unofficial) barebones plugin for Omeka Classic that provides a simple example of a plugin structure. It includes a configuration page and an admin view, offering a starting point for developing custom plugins and some simple examples. Its based on informations from the Omeka classic tutorials: https://omeka.readthedocs.io/en/latest/Tutorials/index.html and own experiences. It served me as template and demonstration plugin as it contains some common building blocks used for Omeka Classic plugins.
 
 ### Features
 
+ - A simple plugin structure incl.:
+    - A plugin metadata file (`plugin.ini`) with basic information about the plugin.
+    - A plugin class (`TemplatePlugin.php`) that extends `Omeka_Plugin_AbstractPlugin`.
+ - A main plugin class (`TemplatePlugin.php`) with examples and explanations about the functions, hooks and filters and what they are doing:
+    - Hooks and filters for Omeka events like `install`, `uninstall`, everything configuration page related, `define_acl`, and `define_routes`.
+    - An example of creating a custom database table.
  - A configuration page to set options:
     - Examples of `formText()`
     - Examples of `formCheckbox()`
@@ -14,7 +20,6 @@ This is a (unofficial) barebones plugin for Omeka Classic that provides a simple
         - Show options set in the configuration form
         - Some button and flash message examples
     - Navigation with links to different views.
- - Ready-to-extend structure for custom Omeka plugin development.
 
 ### Installation
 

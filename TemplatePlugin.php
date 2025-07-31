@@ -29,7 +29,9 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
         'define_acl',
     ];
 
-    /**
+    /** 
+     * An array of filters that this plugin will apply. Each filter is a string
+     * representing a point in Omeka's plugin architecture where the plugin can modify data.
      * See: https://omeka.readthedocs.io/en/latest/Tutorials/understandingFilters.html
      * 
      * @var array Filters for the plugin.
@@ -63,17 +65,19 @@ class TemplatePlugin extends Omeka_Plugin_AbstractPlugin
         set_option('template_option_2', 'Default Value');
 
         // Create a custom database table:
+        // (In this case the entry is useless, but it shows how to create a table and if needed it can be used to store data or edit omeka db entries)
+        $db = $this->_db; // Get the database object
         try {
             // Use the `_db` property in the install hook to create tables; Omeka auto-generates table names from model names.
             $sql = "
-                CREATE TABLE IF NOT EXISTS `{$this->_db->Template}` (
+                CREATE TABLE IF NOT EXISTS `{$db->Template}` (
                     `id` INT AUTO_INCREMENT PRIMARY KEY,
                     `name` VARCHAR(255) NOT NULL,
                     `description` TEXT NULL,
                     `added` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
             ";
-            $this->_db->query($sql);
+            $db->query($sql);
         } catch(Exception $e) {
             throw $e;
         }
