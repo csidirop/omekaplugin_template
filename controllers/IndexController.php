@@ -79,9 +79,14 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
     public function thirdviewAction()
     {
         //This will automatically render views/admin/index/thirdview.php
-        // Do something else: ...
         debug("Template: thirdviewAction() called");
+
+        $this->view->itemTypes = get_db()->getTable('ItemType')->findAll();
+        $this->view->itemTypeElements = get_db()->getTable('ItemTypesElements')->findAll();
     }
+
+
+
 
 }
 
