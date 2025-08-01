@@ -14,8 +14,14 @@ $head = array(
 <?php echo $this->partial('common/nav.php');?> <!-- This will include the navigation from Template/views/admin/common/nav.php -->
 
 <h2>Template Plugin Admin View</h2>
-<p>This is a sample admin view for this (unofficial) template and demonstration plugin. It contains some common building blocks used for Omeka Classic plugins. Look into the source code for more details.</p>
-<p>Here are some of the options set by this plugin (in the config view):</p>
+<p>This is a sample admin view for this (unofficial) template and demonstration plugin. Look into the source code for more details.</p>
+<ul>
+    <li><p>This is the first - the main - page. It contains some common building blocks used for Omeka Classic plugins</p></li>
+    <li><p>The second page is empty</p></li>
+    <li><p>The third page shows some data from the database</p></li>
+</ul>
+
+<p>The page contains some common building blocks used for Omeka Classic plugins. beginning with a simple navigation at the top, followed by the main content. In this case Text and some of the options set by this plugin (in the config view):</p>
 
 <ul>
     <li>Config option 1: <strong><?php echo htmlspecialchars(get_option('template_option_1')); ?></strong></li>

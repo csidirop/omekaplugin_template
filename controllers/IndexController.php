@@ -18,8 +18,8 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
      */
     public function indexAction(): void
     {
-        debug("Template: indexAction()");
         // This will automatically render views/admin/index/index.php
+        debug("Template: indexAction()");
         // Do something else: ...
     }
 
@@ -65,7 +65,7 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
      */
     public function secondviewAction()
     {
-        //This will automatically render views/admin/index/secondview.php
+        // This will automatically render views/admin/index/secondview.php
         // Do something else: ...
         debug("Template: secondviewAction() called");
     }
@@ -78,11 +78,15 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
      */
     public function thirdviewAction()
     {
-        //This will automatically render views/admin/index/thirdview.php
-        // Do something else: ...
+        // This will automatically render views/admin/index/thirdview.php
         debug("Template: thirdviewAction() called");
-    }
 
+        // Load some data from the database using the `getTable()` function from the database object (Omeka_Db_Table), to display in the third view:
+        $this->view->itemTypes = get_db()->getTable('ItemType')->findAll();                 // NOTE: Database table: omeka_item_types | getTable() value: 'ItemType'
+        $this->view->itemTypeElements = get_db()->getTable('ItemTypesElements')->findAll(); // NOTE: Database table: omeka_item_types_elements | getTable() value: 'ItemTypesElements'
+        $this->view->element = get_db()->getTable('Element')->findAll();                    // NOTE: Database table: omeka_elements | getTable() value: 'Element' (without `s`)
+        $this->view->elementSet = get_db()->getTable('ElementSet')->findAll();              // NOTE: Database table: omeka_elemet_sets | getTable() value: 'ElementSet' (without `s`)
+    }
 }
 
 ?>

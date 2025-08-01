@@ -1,5 +1,5 @@
 <?php
-    queue_css_file('belogs');
+    queue_css_file('template'); // Load the CSS file located under /view/admin/css/ with the filename template(.css) for this view
 
     $head = array('bodyclass' => 'Template index','title' => html_escape(__('Template')));
     echo head($head);
