@@ -1,10 +1,11 @@
-pre {
-    max-width: 100%;
-    overflow: auto;
+.scrollable {
+    max-height: 300px;
+    overflow-y: auto;
     border: 1px solid #ccc;
-    padding: 10px;
-    background-color: #f9f9f9;
-    margin-bottom: 0;
-    max-height: 250px;
+    padding: 5px;
+    margin-bottom: 40px;
 }
 
+.scrollable table {
+    margin-bottom: unset;
+}
