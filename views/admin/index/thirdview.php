@@ -146,7 +146,8 @@
     </details>
 </div>
 
-<p>To add a new item type, you can use the <code>`addItemTypeAction()`</code> function in the controller. This function creates a new ItemType record and saves it to the database.</p>
+<h4>Unrelated, but adding some new item types:</h4>
+<p>To add a new item type, you can use the <code>`ItemType`</code> object. It will handle everthing else internally. This function creates a new ItemType record and saves it to the database.</p>
 <form method="post" action="<?php echo url('template/index/add-item-type'); ?>">
     <label for="item-type-name">Item Type Name:</label>
     <input

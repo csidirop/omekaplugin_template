@@ -95,41 +95,43 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
     {
         $name = $this->getRequest()->getParam('name');
 
+        // If no name was provided, show an error or redirect back with a flash message:
         if (!$name) {
-            // If no name was provided, show an error or redirect back with a flash message
             $this->_helper->flashMessenger(__('Please provide a name for the new item type.'), 'error');
             return $this->_helper->redirector('thirdview', 'index');
         }
 
-        // Create a new ItemType record
+        // Create a new ItemType record:
         $itemType = new ItemType();
         $itemType->name = $name;
         $itemType->description = 'Description of the new item type';
 
-        // Attach existing elements by ID
-        // $itemType->addElementById(1);
-        // $itemType->addElementById(2);
-
-        // // Create & attach new custom elements in one call
-        // $itemType->addElements(array(
-        //     // A new element:
-        //     array(
-        //         'name'        => 'Custom Field 1',
-        //         'description' => 'First custom field introduced for this type',
-        //         'order'       => 1
-        //     ),
-        //     // And another new element:
-        //     array(
-        //         'name'        => 'Custom Field 2',
-        //         'description' => 'Second custom field',
-        //         'order'       => 2
-        //     ),
-        // ));
-
-        // Save to the database
+        // Save to the database (important to save before attaching elements):
         $itemType->save();
 
-        // Optionally, add a flash message and redirect
+        // Attach existing elements by ID:
+        $itemType->addElementById(1);
+        $itemType->addElementById(2);
+
+        // Attach new custom elements:
+        $itemType->addElements(array(
+            // A new element:
+            array(
+                'name'        => 'Custom Field 1',
+                'description' => 'First custom field introduced for this type',
+                'order'       => 1
+            ),
+            // And another new element:
+            array(
+                'name'        => 'Custom Field 2',
+                'description' => 'Second custom field',
+                'order'       => 2
+            ),
+        ));
+
+        // Save the item type again now will all elements attached:
+        $itemType->save();
+
         $this->_helper->flashMessenger(__('New ItemType added!'), 'success');
         $this->_helper->redirector('thirdview', 'index');
     }
