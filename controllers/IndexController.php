@@ -82,6 +82,9 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
         debug("Template: thirdviewAction() called");
 
         // Load some data from the database using the `getTable()` function from the database object (Omeka_Db_Table), to display in the third view:
+        $this->view->columns= get_db()->getTable('ItemType')->getColumns(); // getColumns() returns an array of column names for the ItemType table
+        $this->view->pairs= get_db()->getTable('ItemType')->findPairsForSelectForm(); // findPairsForSelectForm() returns an array of pairs for a select form
+
         $this->view->itemTypes = get_db()->getTable('ItemType')->findAll();                 // NOTE: Database table: omeka_item_types | getTable() value: 'ItemType'
         $this->view->itemTypeElements = get_db()->getTable('ItemTypesElements')->findAll(); // NOTE: Database table: omeka_item_types_elements | getTable() value: 'ItemTypesElements'
         $this->view->element = get_db()->getTable('Element')->findAll();                    // NOTE: Database table: omeka_elements | getTable() value: 'Element' (without `s`)

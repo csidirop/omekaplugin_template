@@ -9,13 +9,30 @@
 <?php echo $this->partial('common/nav.php');?>
 
 <h2>Third View</h2>
-<p>This is the third view of the Template plugin. It demonstrates how to display data from the database, in this example <strong>item types</strong> and their elements. The date is displayed in a table hidden by a &lt;details&gt;-Element. So nothing here is specific to Omeka.</p>
-<p>Here are some item types and their elements:</p>
+<p>This is the third view of the Template plugin. It demonstrates how to display data from the database by using the <code>`getTable()`</code> function in the controller. (The data is displayed in a table hidden by a &lt;details&gt;-Element. So nothing here is specific to Omeka.) In this example <strong>item types</strong> and their elements are used.</p>
 
+<!-- <p> element: <?php // var_dump(value: $this->col) ?> </p> -->
+<!-- <p> test_itemTypes: <?php // foreach($this->itemTypeElements as $singleItemTypeElement) :  echo $singleItemTypeElement->name ; endforeach ?> </p> -->
+
+
+
+<h4><code>getTable('TableName')->getColumns()</code></h4>
+<p>This returns an array of column names for the given table. Here are some columns retrieved by <code>`getTable('ItemType')->getColumns()`</code>:</p>
 <div>
-    <!-- <p> element: <?php  //var_dump($this->elementSet) ?> </p> -->
-    <!-- <p> test_itemTypes: <?php // foreach($this->itemTypeElements as $singleItemTypeElement) :  echo $singleItemTypeElement->name ; endforeach ?> </p> -->
+    <?php foreach($this->columns as $key) : echo $key." | " ; endforeach ?>
+</div>
 
+<h4><code>`getTable('TableName')->findPairsForSelectForm()`</code></h4>
+<p>This returns an array of pairs for a select form. Here are some pairs retrieved by <code>`getTable('ItemType')->findPairsForSelectForm()`</code>:</p>
+<div>
+    <?php foreach($this->pairs as $key => $value): ?>
+        <span><?php echo htmlspecialchars($key) . ': ' . htmlspecialchars($value) . " | "; ?></span>
+    <?php endforeach; ?>
+</div>
+
+<h4><code>`getTable('TableName')->findAll()`</code></h4>
+<p>This returns all entries of the given table. Here are some entries retrieved by <code>`getTable('ItemType')->findAll()`</code>:</p>
+<div>
     <details>
         <summary><strong>Item Types</strong></summary>
         <div>Database table: omeka_item_types | getTable() value: 'ItemType'</div>
