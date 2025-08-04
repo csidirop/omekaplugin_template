@@ -14,8 +14,6 @@
 <!-- <p> element: <?php // var_dump(value: $this->col) ?> </p> -->
 <!-- <p> test_itemTypes: <?php // foreach($this->itemTypeElements as $singleItemTypeElement) :  echo $singleItemTypeElement->name ; endforeach ?> </p> -->
 
-
-
 <h4><code>getTable('TableName')->getColumns()</code></h4>
 <p>This returns an array of column names for the given table. Here are some columns retrieved by <code>`getTable('ItemType')->getColumns()`</code>:</p>
 <div>
@@ -147,3 +145,15 @@
         </div>
     </details>
 </div>
+
+<p>To add a new item type, you can use the <code>`addItemTypeAction()`</code> function in the controller. This function creates a new ItemType record and saves it to the database.</p>
+<form method="post" action="<?php echo url('template/index/add-item-type'); ?>">
+    <label for="item-type-name">Item Type Name:</label>
+    <input
+        type="text"
+        name="name"
+        required
+        placeholder="Enter a name for the new type"
+    />
+    <input type="submit" value="Add Item Type" />
+</form>

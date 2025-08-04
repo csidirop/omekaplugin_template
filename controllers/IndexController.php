@@ -90,6 +90,49 @@ class Template_IndexController extends Omeka_Controller_AbstractActionController
         $this->view->element = get_db()->getTable('Element')->findAll();                    // NOTE: Database table: omeka_elements | getTable() value: 'Element' (without `s`)
         $this->view->elementSet = get_db()->getTable('ElementSet')->findAll();              // NOTE: Database table: omeka_elemet_sets | getTable() value: 'ElementSet' (without `s`)
     }
+
+    public function addItemTypeAction()
+    {
+        $name = $this->getRequest()->getParam('name');
+
+        if (!$name) {
+            // If no name was provided, show an error or redirect back with a flash message
+            $this->_helper->flashMessenger(__('Please provide a name for the new item type.'), 'error');
+            return $this->_helper->redirector('thirdview', 'index');
+        }
+
+        // Create a new ItemType record
+        $itemType = new ItemType();
+        $itemType->name = $name;
+        $itemType->description = 'Description of the new item type';
+
+        // Attach existing elements by ID
+        // $itemType->addElementById(1);
+        // $itemType->addElementById(2);
+
+        // // Create & attach new custom elements in one call
+        // $itemType->addElements(array(
+        //     // A new element:
+        //     array(
+        //         'name'        => 'Custom Field 1',
+        //         'description' => 'First custom field introduced for this type',
+        //         'order'       => 1
+        //     ),
+        //     // And another new element:
+        //     array(
+        //         'name'        => 'Custom Field 2',
+        //         'description' => 'Second custom field',
+        //         'order'       => 2
+        //     ),
+        // ));
+
+        // Save to the database
+        $itemType->save();
+
+        // Optionally, add a flash message and redirect
+        $this->_helper->flashMessenger(__('New ItemType added!'), 'success');
+        $this->_helper->redirector('thirdview', 'index');
+    }
 }
 
 ?>
